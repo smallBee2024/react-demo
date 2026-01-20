@@ -23,16 +23,18 @@ const menuItems = [
     key: "/dashboard",
     icon: <DashboardOutlined />,
     label: <Link href="/dashboard">Dashboard</Link>,
-  },
-  {
-    key: "/dashboard/about",
-    icon: <InfoCircleOutlined />,
-    label: <Link href="/dashboard/about">About</Link>,
-  },
-  {
-    key: "/dashboard/settings",
-    icon: <SettingOutlined />,
-    label: <Link href="/dashboard/settings">Settings</Link>,
+    children: [
+      {
+        key: "/dashboard/about",
+        icon: <InfoCircleOutlined />,
+        label: <Link href="/dashboard/about">About</Link>,
+      },
+      {
+        key: "/dashboard/settings",
+        icon: <SettingOutlined />,
+        label: <Link href="/dashboard/settings">Settings</Link>,
+      },
+    ],
   },
   {
     key: "/demo",
@@ -43,6 +45,21 @@ const menuItems = [
         key: "/demo/context",
         icon: <InfoCircleOutlined />,
         label: <Link href="/demo/context">Context</Link>,
+      },
+      {
+        key: "/demo/use-context-selector",
+        icon: <InfoCircleOutlined />,
+        label: <Link href="/demo/use-context-selector">use-context-selector</Link>,
+      },
+      {
+        key: "/demo/tanstack-react-query",
+        icon: <InfoCircleOutlined />,
+        label: <Link href="/demo/tanstack-react-query">tanstack-react-query</Link>,
+      },
+      {
+        key: "/demo/zustand",
+        icon: <InfoCircleOutlined />,
+        label: <Link href="/demo/zustand">zustand</Link>,
       },
     ],
   },
