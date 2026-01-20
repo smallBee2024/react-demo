@@ -7,9 +7,9 @@ import {
   SettingOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import "antd/dist/reset.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const { Sider, Content } = Layout;
 
@@ -20,66 +20,96 @@ const menuItems = [
     label: <Link href="/">首页</Link>,
   },
   {
-    key: "/dashboard",
+    key: "/layout-template",
     icon: <DashboardOutlined />,
-    label: <Link href="/dashboard">Dashboard</Link>,
+    label: 'layout与template的区别',
     children: [
       {
-        key: "/dashboard/about",
+        key: "/layout-template/about",
         icon: <InfoCircleOutlined />,
-        label: <Link href="/dashboard/about">About</Link>,
+        label: 'About',
       },
       {
-        key: "/dashboard/settings",
+        key: "/layout-template/settings",
         icon: <SettingOutlined />,
-        label: <Link href="/dashboard/settings">Settings</Link>,
+        label: 'Settings',
       },
     ],
   },
   {
     key: "/demo",
     icon: <InfoCircleOutlined />,
-    label: <Link href="/demo">Demo</Link>,
+    label: 'Demo',
     children: [
       {
         key: "/demo/context",
         icon: <InfoCircleOutlined />,
-        label: <Link href="/demo/context">Context</Link>,
+        label: 'Context',
       },
       {
         key: "/demo/use-context-selector",
         icon: <InfoCircleOutlined />,
-        label: <Link href="/demo/use-context-selector">use-context-selector</Link>,
+        label: 'use-context-selector',
       },
       {
         key: "/demo/tanstack-react-query",
         icon: <InfoCircleOutlined />,
-        label: <Link href="/demo/tanstack-react-query">tanstack-react-query</Link>,
+        label: 'tanstack-react-query',
       },
       {
         key: "/demo/zustand",
         icon: <InfoCircleOutlined />,
-        label: <Link href="/demo/zustand">zustand</Link>,
+        label: 'zustand',
       },
     ],
   },
 ];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
   const pathname = usePathname();
+  const [current, setCurrent] = useState('/');
+  const [openKeys, setOpenKeys] = useState(['/']);
   // 兼容首页和 dashboard 的选中
-  const selectedKey = menuItems.find(item => pathname === item.key) ? [pathname] : ["/"];
+  // const selectedKey = menuItems.find(item => pathname === item.key) ? [pathname] : ["/"];
+  const selectedKey = ["/"];
+  console.log('pathname', pathname);
+
+  const onClick: any = (e: any) => {
+    // console.log('click ', e);
+    setCurrent(e.key);
+    router.push(e.key as string);
+  };
+
+  // 刷新页面时，设置当前选中和打开的菜单
+  useEffect(() => {
+    setCurrent(pathname);
+    let openkey = pathname.split('/')[1]
+    if (openkey) {
+      setOpenKeys([`/${openkey}`]);
+    }
+  }, [pathname]);
+
+  const onOpenChange: any = (e: string[]) => {
+    console.log('openChange 111', e);
+    setOpenKeys(e);
+  };
+
   return (
     <html lang="en">
       <body style={{ margin: 0, minHeight: "100vh", background: "#f5f5f5" }}>
         <Layout style={{ minHeight: "100vh" }}>
-          <Sider breakpoint="lg" collapsedWidth="0" style={{ background: "#fff" }}>
+          <Sider breakpoint="lg" collapsedWidth="0" width={250} style={{ background: "#fff" }}>
             <div style={{ height: 32, margin: 16, fontWeight: 700, fontSize: 20 }}>
-              My App
+              React Demo
             </div>
             <Menu
               mode="inline"
-              selectedKeys={selectedKey}
+              defaultOpenKeys={['/']}
+              onClick={onClick}
+              selectedKeys={[current]}
+              openKeys={openKeys}
+              onOpenChange={onOpenChange}
               items={menuItems}
               style={{ height: "100%" }}
             />
