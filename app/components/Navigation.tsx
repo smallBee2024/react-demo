@@ -72,6 +72,11 @@ const menuItems = [
         icon: <InfoCircleOutlined />,
         label: 'useCallback',
       },
+      {
+        key: "/hook-api/use-context",
+        icon: <InfoCircleOutlined />,
+        label: 'useContext',
+      },
     ]
   }
 ];
