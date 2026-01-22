@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme } from '../hook-api/use-context/context';
+import { useTheme } from '../hook-api/(context)/use-context/context';
 
 export default function Button() {
   const { theme, toggleTheme } = useTheme();

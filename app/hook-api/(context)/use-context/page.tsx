@@ -2,16 +2,18 @@
 
 import React, { useState } from 'react';
 import { ThemeContext, ThemeContextType, ThemeType } from './context';
-import Button from '../../components/button';
+import Button from '@/app/components/button';
+import Test from './components/test';
 
 function App() {
   const [theme, setTheme] = useState<ThemeType>('light');
+  const [count, setCount] = useState(0);
 
   const toggleTheme = () => {
     setTheme(prev => prev === 'light' ? 'dark' : 'light');
   };
 
-  const value: ThemeContextType = { theme, toggleTheme };
+  const value: ThemeContextType = { theme, toggleTheme, count, setCount };
 
   return (
     <ThemeContext.Provider value={value}>
@@ -24,6 +26,7 @@ function App() {
       >
         <h1>Current theme: {theme}</h1>
         <Button />
+        <Test />
       </div>
     </ThemeContext.Provider>
   );

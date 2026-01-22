@@ -5,12 +5,16 @@ export type ThemeType = 'light' | 'dark';
 export interface ThemeContextType {
   theme: ThemeType;
   toggleTheme: () => void;
+  count: number;
+  setCount: (count: number) => void;
 }
 
 // 1. 创建 Context
 export const ThemeContext = createContext<ThemeContextType>({
   theme: 'light',
   toggleTheme: () => {},
+  count: 0,
+  setCount: () => {},
 });
 
 type ThemeProviderProps = {

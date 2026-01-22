@@ -77,6 +77,11 @@ const menuItems = [
         icon: <InfoCircleOutlined />,
         label: 'useContext',
       },
+      {
+        key: "/hook-api/use-context-selector",
+        icon: <InfoCircleOutlined />,
+        label: 'useContextSelector',
+      },
     ]
   }
 ];
