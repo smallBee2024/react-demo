@@ -82,6 +82,28 @@ const menuItems = [
         icon: <InfoCircleOutlined />,
         label: 'useContextSelector',
       },
+      {
+        key: "/hook-api/use-reducer",
+        icon: <InfoCircleOutlined />,
+        label: 'useReducer',
+      },
+    ]
+  },
+  {
+    key: "/children-demo",
+    icon: <InfoCircleOutlined />,
+    label: 'children-demo',
+    children: [
+      {
+        key: "/children-demo/children",
+        icon: <InfoCircleOutlined />,
+        label: 'Children 作为函数',
+      },
+      {
+        key: "/children-demo/props-render",
+        icon: <InfoCircleOutlined />,
+        label: 'Props 作为函数',
+      },
     ]
   }
 ];
