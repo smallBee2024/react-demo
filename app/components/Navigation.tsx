@@ -105,7 +105,12 @@ const menuItems = [
         label: 'Props 作为函数',
       },
     ]
-  }
+  },
+  {
+    key: "/passing-values",
+    icon: <InfoCircleOutlined />,
+    label: '传递值的几种方式',
+  },
 ];
 
 export default function Navigation({ children }: { children: React.ReactNode }) {
@@ -115,6 +120,7 @@ export default function Navigation({ children }: { children: React.ReactNode }) 
   const [openKeys, setOpenKeys] = useState(['/']);
 
   const onClick: any = (e: any) => {
+    console.log("click ", e);
     setCurrent(e.key);
     router.push(e.key as string);
   };
