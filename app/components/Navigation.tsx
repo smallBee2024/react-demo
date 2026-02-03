@@ -5,6 +5,14 @@ import {
   DashboardOutlined,
   InfoCircleOutlined,
   SettingOutlined,
+  SplitCellsOutlined,
+  SubnodeOutlined,
+  FileMarkdownOutlined,
+  FlagOutlined,
+  GiftOutlined,
+  FormatPainterOutlined,
+  FundProjectionScreenOutlined,
+  FolderOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -20,12 +28,12 @@ const menuItems = [
   },
   {
     key: "/layout-template",
-    icon: <DashboardOutlined />,
+    icon: <FundProjectionScreenOutlined />,
     label: 'layout与template的区别',
     children: [
       {
         key: "/layout-template/about",
-        icon: <InfoCircleOutlined />,
+        icon: <FolderOutlined />,
         label: 'About',
       },
       {
@@ -37,79 +45,91 @@ const menuItems = [
   },
   {
     key: "/demo",
-    icon: <InfoCircleOutlined />,
+    icon: <FormatPainterOutlined />,
     label: 'Demo',
     children: [
       {
         key: "/demo/context",
-        icon: <InfoCircleOutlined />,
+        icon: <FolderOutlined />,
         label: 'Context',
       },
       {
         key: "/demo/use-context-selector",
-        icon: <InfoCircleOutlined />,
+        icon: <FolderOutlined />,
         label: 'use-context-selector',
       },
       {
         key: "/demo/tanstack-react-query",
-        icon: <InfoCircleOutlined />,
+        icon: <FolderOutlined />,
         label: 'tanstack-react-query',
       },
       {
         key: "/demo/zustand",
-        icon: <InfoCircleOutlined />,
+        icon: <FolderOutlined />,
         label: 'zustand',
       },
     ],
   },
   {
     key: "/hook-api",
-    icon: <InfoCircleOutlined />,
+    icon: <GiftOutlined />,
     label: 'hook-api',
     children: [
       {
         key: "/hook-api/use-callback",
-        icon: <InfoCircleOutlined />,
+        icon: <FolderOutlined />,
         label: 'useCallback',
       },
       {
         key: "/hook-api/use-context",
-        icon: <InfoCircleOutlined />,
+        icon: <FolderOutlined />,
         label: 'useContext',
       },
       {
         key: "/hook-api/use-context-selector",
-        icon: <InfoCircleOutlined />,
+        icon: <FolderOutlined />,
         label: 'useContextSelector',
       },
       {
         key: "/hook-api/use-reducer",
-        icon: <InfoCircleOutlined />,
+        icon: <FolderOutlined />,
         label: 'useReducer',
       },
     ]
   },
   {
     key: "/children-demo",
-    icon: <InfoCircleOutlined />,
+    icon: <FlagOutlined />,
     label: 'children-demo',
     children: [
       {
         key: "/children-demo/children",
-        icon: <InfoCircleOutlined />,
+        icon: <FolderOutlined />,
         label: 'Children 作为函数',
       },
       {
         key: "/children-demo/props-render",
-        icon: <InfoCircleOutlined />,
+        icon: <FolderOutlined />,
         label: 'Props 作为函数',
       },
     ]
   },
   {
     key: "/passing-values",
-    icon: <InfoCircleOutlined />,
+    icon: <SplitCellsOutlined />,
     label: '传递值的几种方式',
+    children: [
+      {
+        key: "/passing-values/classic",
+        icon: <SubnodeOutlined />,
+        label: '基础传值方式',
+      },
+      {
+        key: "/passing-values/doc",
+        icon: <FileMarkdownOutlined />,
+        label: '文档说明',
+      },
+    ]
   },
 ];
 
@@ -161,10 +181,12 @@ export default function Navigation({ children }: { children: React.ReactNode }) 
           <div
             style={{
               padding: 24,
-              minHeight: 360,
+              // minHeight: 360,
+              height: "calc(100vh - 48px)",
               background: "#fff",
               borderRadius: 8,
               boxShadow: "0 2px 8px #f0f1f2",
+              overflowY: "auto",
             }}
           >
             {children}

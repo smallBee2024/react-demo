@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #dc1818;
+  --background: #ffffff;
   --foreground: #171717;
 }
 
@@ -29,4 +29,26 @@ button {
   border: 1px solid #333;
   padding: 5px;
   cursor: pointer;
+}
+
+/* styles/globals.css */
+.markdown-content table {
+  border-collapse: collapse;
+  width: 10; /* 或 100% */
+  margin: 16px 0;
+}
+
+.markdown-content th,
+.markdown-content td {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.markdown-content th {
+  background-color: #f4f4f4;
+}
+
+.markdown-content hr {
+  margin: 10px 0;
 }
